@@ -1,4 +1,4 @@
-# udt-owner-lock
+# ckb-utils-lock
 
 TODO: Write this readme
 
