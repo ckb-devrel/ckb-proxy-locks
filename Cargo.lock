@@ -29,6 +29,13 @@ dependencies = [
 ]
 
 [[package]]
+name = "always-success"
+version = "0.1.0"
+dependencies = [
+ "ckb-std",
+]
+
+[[package]]
 name = "anyhow"
 version = "1.0.86"
 source = "registry+https://github.com/rust-lang/crates.io-index"
