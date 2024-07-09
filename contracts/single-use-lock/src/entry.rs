@@ -25,7 +25,7 @@ pub fn check_outpoint(outpoint: OutPoint) -> bool {
 pub fn main() -> Result<(), Error> {
     let script = load_script()?;
     let args: Vec<u8> = script.args().unpack();
-    if args.len() != OutPoint::TOTAL_SIZE {
+    if args.len() < OutPoint::TOTAL_SIZE {
         return Err(Error::Encoding);
     }
 
