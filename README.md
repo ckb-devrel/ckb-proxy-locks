@@ -1,4 +1,4 @@
-# ckb-utils-lock
+# ckb-proxy-locks
 
 TODO: Write this readme
 
