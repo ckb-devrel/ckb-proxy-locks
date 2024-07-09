@@ -1,0 +1,30 @@
+[[cells]]
+name = "always-success"
+enable_type_id = false
+location = { file = "build/release/always-success" }
+
+[[cells]]
+name = "input-type-proxy-lock"
+enable_type_id = false
+location = { file = "build/release/input-type-proxy-lock" }
+
+[[cells]]
+name = "output-type-proxy-lock"
+enable_type_id = false
+location = { file = "build/release/output-type-proxy-lock" }
+
+[[cells]]
+name = "lock-proxy-lock"
+enable_type_id = false
+location = { file = "build/release/lock-proxy-lock" }
+
+[[cells]]
+name = "single-use-lock"
+enable_type_id = false
+location = { file = "build/release/single-use-lock" }
+
+# The lock script set to output cells
+[lock]
+code_hash = "0x9bd7e06f3ecf4be0f2fcd2188b23f1b9fcc88e5d4b65a8637b17723bbda3cce8"
+args = "0xdc7a30c57e8bef48b1f3d26fb0aac10cd65edf30"
+hash_type = "type"
