@@ -10,6 +10,7 @@ members = [
   "contracts/input-type-proxy-lock",
   "contracts/output-type-proxy-lock",
   "contracts/single-use-lock",
+  "contracts/type-burn-lock",
   "tests",
 ]
 
