@@ -1,0 +1,53 @@
+{
+  "cell_recipes": [
+    {
+      "name": "always-success",
+      "tx_hash": "0x10d63a996157d32c01078058000052674ca58d15f921bec7f1dcdac2160eb66b",
+      "index": 0,
+      "occupied_capacity": 127700000000,
+      "data_hash": "0x3b521cc4b552f109d092d8cc468a8048acb53c5952dbe769d2b2f9cf6e47f7f1",
+      "type_id": null
+    },
+    {
+      "name": "input-type-proxy-lock",
+      "tx_hash": "0x10d63a996157d32c01078058000052674ca58d15f921bec7f1dcdac2160eb66b",
+      "index": 1,
+      "occupied_capacity": 2742100000000,
+      "data_hash": "0x5123908965c711b0ffd8aec642f1ede329649bda1ebdca6bd24124d3796f768a",
+      "type_id": null
+    },
+    {
+      "name": "output-type-proxy-lock",
+      "tx_hash": "0x10d63a996157d32c01078058000052674ca58d15f921bec7f1dcdac2160eb66b",
+      "index": 2,
+      "occupied_capacity": 2742100000000,
+      "data_hash": "0x2df53b592db3ae3685b7787adcfef0332a611edb83ca3feca435809964c3aff2",
+      "type_id": null
+    },
+    {
+      "name": "lock-proxy-lock",
+      "tx_hash": "0x10d63a996157d32c01078058000052674ca58d15f921bec7f1dcdac2160eb66b",
+      "index": 3,
+      "occupied_capacity": 2750900000000,
+      "data_hash": "0x5d41e32e224c15f152b7e6529100ebeac83b162f5f692a5365774dad2c1a1d02",
+      "type_id": null
+    },
+    {
+      "name": "single-use-lock",
+      "tx_hash": "0x10d63a996157d32c01078058000052674ca58d15f921bec7f1dcdac2160eb66b",
+      "index": 4,
+      "occupied_capacity": 2783700000000,
+      "data_hash": "0x8290467a512e5b9a6b816469b0edabba1f4ac474e28ffdd604c2a7c76446bbaf",
+      "type_id": null
+    },
+    {
+      "name": "type-burn-lock",
+      "tx_hash": "0x10d63a996157d32c01078058000052674ca58d15f921bec7f1dcdac2160eb66b",
+      "index": 5,
+      "occupied_capacity": 2785300000000,
+      "data_hash": "0xff78bae0abf17d7a404c0be0f9ad9c9185b3f88dcc60403453d5ba8e1f22f53a",
+      "type_id": null
+    }
+  ],
+  "dep_group_recipes": []
+}
