@@ -8,7 +8,7 @@ use ckb_std::{
 use crate::error::Error;
 
 pub fn check_owner_output_type(owner_input_type_hash: &[u8]) -> bool {
-    let is_owner_mode = QueryIter::new(load_cell_type_hash, Source::Input).any(|cell_type_hash| {
+    let is_owner_mode = QueryIter::new(load_cell_type_hash, Source::Output).any(|cell_type_hash| {
         if let Some(cell_type_hash) = cell_type_hash {
             owner_input_type_hash[..] == cell_type_hash[..]
         } else {
