@@ -1,6 +1,6 @@
-# pointer-type
+# easy-to-discover-type
 
-point to an on-chain cell, especially to recognize script cells
+Reveal cells' data with their type script args
 
 *This contract was bootstrapped with [ckb-script-templates].*
 
