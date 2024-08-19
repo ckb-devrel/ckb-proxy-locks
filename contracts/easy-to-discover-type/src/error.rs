@@ -9,6 +9,7 @@ pub enum Error {
     LengthNotEnough,
     Encoding,
     InsufficientArgsLength,
+    DataHashNotMatch,
 }
 
 impl From<SysError> for Error {
