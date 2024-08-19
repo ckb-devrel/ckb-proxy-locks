@@ -11,7 +11,7 @@ members = [
   "contracts/output-type-proxy-lock",
   "contracts/single-use-lock",
   "contracts/type-burn-lock",
-  "contracts/pointer-type",
+  "contracts/easy-to-discover-type",
   "tests",
 ]
 

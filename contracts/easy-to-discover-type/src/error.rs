@@ -8,12 +8,7 @@ pub enum Error {
     ItemMissing,
     LengthNotEnough,
     Encoding,
-    NotUpgradable,
-    InvalidFlag,
-    DataHashNotMatch,
-    TypeHashNotMatch,
-    OutPointPayloadNotMatch,
-    TypeScriptPayloadNotMatch,
+    InsufficientArgsLength,
 }
 
 impl From<SysError> for Error {
