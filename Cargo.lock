@@ -1279,6 +1279,13 @@ dependencies = [
 ]
 
 [[package]]
+name = "time-lock"
+version = "0.1.0"
+dependencies = [
+ "ckb-std",
+]
+
+[[package]]
 name = "toml"
 version = "0.5.11"
 source = "registry+https://github.com/rust-lang/crates.io-index"
