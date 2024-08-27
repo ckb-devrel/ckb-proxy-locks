@@ -1254,6 +1254,7 @@ dependencies = [
 name = "tests"
 version = "0.1.0"
 dependencies = [
+ "ckb-std",
  "ckb-testtool",
  "serde_json",
 ]
@@ -1276,6 +1277,13 @@ dependencies = [
  "proc-macro2",
  "quote",
  "syn 2.0.66",
+]
+
+[[package]]
+name = "time-lock"
+version = "0.1.0"
+dependencies = [
+ "ckb-std",
 ]
 
 [[package]]
