@@ -2,7 +2,7 @@ use alloc::vec::Vec;
 use ckb_std::{
     ckb_constants::Source,
     ckb_types::prelude::Unpack,
-    high_level::{load_cell_data_hash, load_script},
+    high_level::{load_cell_data_hash, load_script, QueryIter},
 };
 
 use crate::error::Error;
@@ -15,9 +15,8 @@ pub fn main() -> Result<(), Error> {
     }
 
     let data_hash = &args[0..32];
-    let expected_data_hash = load_cell_data_hash(0, Source::GroupOutput)?;
 
-    if data_hash != expected_data_hash.as_ref() {
+    if QueryIter::new(load_cell_data_hash, Source::GroupOutput).any(|hash| data_hash != hash) {
         return Err(Error::DataHashNotMatch);
     }
 
