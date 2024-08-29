@@ -1,4 +1,5 @@
 use crate::Loader;
+use ckb_std::since::Since;
 use ckb_testtool::{
     builtin::ALWAYS_SUCCESS,
     ckb_types::{bytes::Bytes, core::TransactionBuilder, packed::*, prelude::*},
@@ -24,14 +25,15 @@ fn test_time_lock() {
         .out_point(required_lock_script_out_point.clone())
         .build();
 
-    let locked_until = 4u64;
-    let locked_until_bytes = locked_until.to_le_bytes();
     let required_script_hash_bytes32 = required_lock_script.calc_script_hash();
+    let locked_until_abs_blk_num_4 = Since::from_block_number(4, true).expect("error");
+    // convert locked_until_blk_num to bytes
+    let locked_until_bytes: [u8; 8] = locked_until_abs_blk_num_4.as_u64().to_le_bytes();
 
     // concat lock_until and required_lock_script_hash
     let mut time_lock_script_args_vec: Vec<u8> = Vec::new();
-    time_lock_script_args_vec.extend_from_slice(&locked_until_bytes);
     time_lock_script_args_vec.extend_from_slice(&required_script_hash_bytes32.as_bytes());
+    time_lock_script_args_vec.extend_from_slice(&locked_until_bytes);
     let time_lock_script_args: Bytes = Bytes::from(time_lock_script_args_vec);
     let time_lock_bin: Bytes = Loader::default().load_binary("time-lock");
     let time_lock_bin_out_point = context.deploy_cell(time_lock_bin);
@@ -45,9 +47,9 @@ fn test_time_lock() {
     let cell_deps: Vec<CellDep> = vec![required_lock_script_cell_dep, time_lock_cell_dep];
 
     // prepare cells
-    let cannot_unlock_yet = 2u64;
-    let can_unlock = 33u64;
-    let utxo_0 = context.create_cell(
+    let cannot_unlock_abs_blk_num_2 = Since::from_block_number(2, true).expect("error");
+    let can_unlock_abs_blk_num_233 = Since::from_block_number(233, true).expect("error");
+    let out_point_0 = context.create_cell(
         CellOutput::new_builder()
             .capacity(500u64.pack())
             .lock(time_lock_script.clone())
@@ -55,10 +57,10 @@ fn test_time_lock() {
         Bytes::new(),
     );
     let cell_input_0 = CellInput::new_builder()
-        .previous_output(utxo_0.clone())
-        .since(cannot_unlock_yet.pack())
+        .previous_output(out_point_0.clone())
+        .since(can_unlock_abs_blk_num_233.as_u64().pack())
         .build();
-    let utxo_1 = context.create_cell(
+    let out_point_1 = context.create_cell(
         CellOutput::new_builder()
             .capacity(500u64.pack())
             .lock(required_lock_script.clone())
@@ -66,12 +68,12 @@ fn test_time_lock() {
         Bytes::new(),
     );
     let cell_input_1 = CellInput::new_builder()
-        .previous_output(utxo_1.clone())
-        .since(can_unlock.pack())
+        .previous_output(out_point_1.clone())
+        .since(can_unlock_abs_blk_num_233.as_u64().pack())
         .build();
     let cell_input_2 = CellInput::new_builder()
-        .previous_output(utxo_1.clone())
-        .since(cannot_unlock_yet.pack())
+        .previous_output(out_point_1.clone())
+        .since(cannot_unlock_abs_blk_num_2.as_u64().pack())
         .build();
 
     let outputs = vec![
