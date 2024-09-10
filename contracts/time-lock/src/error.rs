@@ -9,8 +9,8 @@ pub enum Error {
     LengthNotEnough,
     Encoding,
     InvalidArguments,
-    TimeLockNotExpired,
-    RequireLockScriptNotFound,
+    LockTimeNotPassed,
+    RequiredLockScriptNotFound,
 }
 
 impl From<SysError> for Error {

@@ -20,19 +20,19 @@ pub fn main() -> Result<(), Error> {
     let required_lock_script_hash = &args[..32];
 
     if !required_lock_script_exists(required_lock_script_hash) {
-        return Err(Error::RequireLockScriptNotFound);
+        return Err(Error::RequiredLockScriptNotFound);
     }
 
     let locked_until = &args[32..40];
     // convert locked_until to Since
-    if !has_lock_time_expired(locked_until) {
-        return Err(Error::TimeLockNotExpired);
+    if !has_lock_time_passed(locked_until) {
+        return Err(Error::LockTimeNotPassed);
     }
 
     Ok(())
 }
 
-pub fn has_lock_time_expired(locked_until: &[u8]) -> bool {
+pub fn has_lock_time_passed(locked_until: &[u8]) -> bool {
     let locked_until = Since::new(u64::from_le_bytes(locked_until.try_into().unwrap()));
     // all cell inputs must have a since value greater than locked_until
     for since in QueryIter::new(load_input_since, Source::Input) {
