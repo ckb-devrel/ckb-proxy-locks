@@ -35,7 +35,7 @@ pub fn main() -> Result<(), Error> {
 pub fn has_lock_time_passed(locked_until: &[u8]) -> bool {
     let locked_until = Since::new(u64::from_le_bytes(locked_until.try_into().unwrap()));
     // all cell inputs must have a since value greater than locked_until
-    for since in QueryIter::new(load_input_since, Source::Input) {
+    for since in QueryIter::new(load_input_since, Source::GroupInput) {
         let since = Since::new(since);
         if since.lt(&locked_until) {
             return false;
