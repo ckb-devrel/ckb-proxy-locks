@@ -5,3 +5,4 @@ mod input_type_owner;
 mod lock_owner;
 mod output_type_owner;
 mod single_use_lock;
+mod time_lock;
