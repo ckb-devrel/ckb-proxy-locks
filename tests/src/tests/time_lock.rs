@@ -60,6 +60,10 @@ fn test_time_lock() {
         .previous_output(out_point_0.clone())
         .since(can_unlock_abs_blk_num_233.as_u64().pack())
         .build();
+    let cell_input_1 = CellInput::new_builder()
+        .previous_output(out_point_0.clone())
+        .since(cannot_unlock_abs_blk_num_2.as_u64().pack())
+        .build();
     let out_point_1 = context.create_cell(
         CellOutput::new_builder()
             .capacity(500u64.pack())
@@ -67,10 +71,6 @@ fn test_time_lock() {
             .build(),
         Bytes::new(),
     );
-    let cell_input_1 = CellInput::new_builder()
-        .previous_output(out_point_1.clone())
-        .since(can_unlock_abs_blk_num_233.as_u64().pack())
-        .build();
     let cell_input_2 = CellInput::new_builder()
         .previous_output(out_point_1.clone())
         .since(cannot_unlock_abs_blk_num_2.as_u64().pack())
@@ -85,8 +85,8 @@ fn test_time_lock() {
 
     let cell_inputs_missing_required_lock: Vec<CellInput> = vec![cell_input_0.clone()];
     let cell_inputs_cannot_unlock_yet: Vec<CellInput> =
-        vec![cell_input_0.clone(), cell_input_2.clone()];
-    let cell_inputs_ok: Vec<CellInput> = vec![cell_input_0.clone(), cell_input_1.clone()];
+        vec![cell_input_1.clone(), cell_input_2.clone()];
+    let cell_inputs_ok: Vec<CellInput> = vec![cell_input_0.clone(), cell_input_2.clone()];
 
     // build transaction
     let tx_missing_required_lock = TransactionBuilder::default()
